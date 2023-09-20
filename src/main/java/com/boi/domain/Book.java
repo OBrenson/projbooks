@@ -25,7 +25,11 @@ public class Book extends BaseEntity {
     @Column
     private int year;
 
-    @ManyToMany(mappedBy = "books")
+    @ManyToMany(mappedBy = "books",
+            cascade = {
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE
+            })
     private List<Author> authors;
 
     @ManyToOne(fetch = FetchType.EAGER)

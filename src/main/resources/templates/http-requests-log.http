@@ -1,0 +1,657 @@
+GET http://localhost:8080/library/authors/get/byBook/fac20158-913e-4832-99c7-f36b950052ec
+Accept: application/json
+
+<> 2023-09-20T012020.200.json
+
+###
+
+GET http://localhost:8080/library/authors/get/all/0/5?id=f1ab6f91-4e42-4ca4-b87a-ac2590b6f52f
+Accept: application/json
+
+<> 2023-09-20T011520.200.json
+
+###
+
+GET http://localhost:8080/library/books/get/all/0/5?sortBy=title&isDesc=true&findBy=authors_id=f1ab6f91-4e42-4ca4-b87a-ac2590b6f52f
+Accept: application/json
+
+<> 2023-09-20T010352.200.json
+
+###
+
+GET http://localhost:8080/library/books/get/all/0/5?sortBy=title&isDesc=true&findBy=authors_id=f1ab6f91-4e42-4ca4-b87a-ac2590b6f52f
+Accept: application/json
+
+<> 2023-09-20T010308.500.json
+
+###
+
+GET http://localhost:8080/library/books/get/all/0/5?sortBy=title&isDesc=true&findBy=authors_id=f1ab6f91-4e42-4ca4-b87a-ac2590b6f52f
+Accept: application/json
+
+<> 2023-09-20T010231.500.json
+
+###
+
+GET http://localhost:8080/library/books/get/all/0/5?sortBy=title&isDesc=true&findBy=authors_id=f1ab6f91-4e42-4ca4-b87a-ac2590b6f52f
+Accept: application/json
+
+<> 2023-09-20T010105.500.json
+
+###
+
+GET http://localhost:8080/library/books/get/all/0/5?sortBy=title&isDesc=true&findBy=authors=f1ab6f91-4e42-4ca4-b87a-ac2590b6f52f
+Accept: application/json
+
+<> 2023-09-20T010054.500.json
+
+###
+
+PUT http://localhost:8080/library/authors/put
+Content-Type: application/json
+Accept: application/json
+
+{
+  "value": [
+    {
+      "name": "aa",
+      "books": ["fac20158-913e-4832-99c7-f36b950052ec", "7c7d8f81-2afe-42be-a464-586facf22b8c"]
+    },
+    {
+      "name": "ab",
+      "books": ["eca47e14-9eaf-472f-a15e-adfbc24c06c0", "30e18301-2ecb-4e49-ae4e-26d7ff32ed23"]
+    }
+  ]
+}
+
+###
+
+PUT http://localhost:8080/library/authors/put
+Content-Type: application/json
+Accept: application/json
+
+{
+  "value": [
+    {
+      "name": "aa",
+      "books": ["433a75cc-c8e3-4a45-888b-cc675d595278", "3fa76f14-d247-4925-93c7-7e8686b1a4b9"]
+    },
+    {
+      "name": "ab",
+      "books": ["0df445cc-5662-4918-90b3-77c56cb154f9", "f8a1429c-2ee9-446a-b70b-0d337daeaaeb"]
+    }
+  ]
+}
+
+<> 2023-09-20T123409.500.json
+
+###
+
+PUT http://localhost:8080/library/books/put
+Content-Type: application/json
+Accept: application/json
+
+{
+  "value": [
+    {
+      "tittle": "a",
+      "genreId": "f95739ab-a751-4af9-8016-f25a17257bed",
+      "publishingHouseId": "f95739ab-a751-4af9-8016-f25a17257bed"
+    },
+    {
+      "tittle": "b",
+      "genreId": "f95739ab-a751-4af9-8016-f25a17257bed",
+      "publishingHouseId": "f95739ab-a751-4af9-8016-f25a17257bed"
+    },
+    {
+      "tittle": "c",
+      "genreId": "f95739ab-a751-4af9-8016-f25a17257bed",
+      "publishingHouseId": "f95739ab-a751-4af9-8016-f25a17257bed"
+    },    {
+      "tittle": "d",
+      "genreId": "f95739ab-a751-4af9-8016-f25a17257bed",
+      "publishingHouseId": "f95739ab-a751-4af9-8016-f25a17257bed"
+    },    {
+      "tittle": "e",
+      "genreId": "f95739ab-a751-4af9-8016-f25a17257bed",
+      "publishingHouseId": "f95739ab-a751-4af9-8016-f25a17257bed"
+    },
+    {
+      "tittle": "f",
+      "genreId": "f95739ab-a751-4af9-8016-f25a17257bed",
+      "publishingHouseId": "f95739ab-a751-4af9-8016-f25a17257bed"
+    }
+  ]
+}
+
+###
+
+PUT http://localhost:8080/library/publ/put
+Content-Type: application/json
+Accept: application/json
+
+{
+  "value": [
+    {
+      "id": "f95739ab-a751-4af9-8016-f25a17257bed",
+      "name": "the first publ house"
+    },
+    {
+      "name": "the best publ house"
+    },
+    {
+      "name": "the great publ house"
+    }
+  ]
+}
+
+###
+
+PUT http://localhost:8080/library/genre/put
+Content-Type: application/json
+Accept: application/json
+
+{
+  "value": [
+    {
+      "id": "f95739ab-a751-4af9-8016-f25a17257bed",
+      "name": "horror"
+    },
+    {
+      "name": "novel"
+    },
+    {
+      "name": "poem"
+    }
+  ]
+}
+
+###
+
+PUT http://localhost:8080/library/books/put
+Content-Type: application/json
+Accept: application/json
+
+{
+  "value": [
+    {
+      "tittle": "a",
+      "genreId": "f95739ab-a751-4af9-8016-f25a17257bed",
+      "publishingHouseId": "f95739ab-a751-4af9-8016-f25a17257bed"
+    },
+    {
+      "tittle": "b",
+      "genreId": "f95739ab-a751-4af9-8016-f25a17257bed",
+      "publishingHouseId": "f95739ab-a751-4af9-8016-f25a17257bed"
+    },
+    {
+      "tittle": "c",
+      "genreId": "f95739ab-a751-4af9-8016-f25a17257bed",
+      "publishingHouseId": "f95739ab-a751-4af9-8016-f25a17257bed"
+    },    {
+      "tittle": "d",
+      "genreId": "f95739ab-a751-4af9-8016-f25a17257bed",
+      "publishingHouseId": "f95739ab-a751-4af9-8016-f25a17257bed"
+    },    {
+      "tittle": "e",
+      "genreId": "f95739ab-a751-4af9-8016-f25a17257bed",
+      "publishingHouseId": "f95739ab-a751-4af9-8016-f25a17257bed"
+    },
+    {
+      "tittle": "f",
+      "genreId": "f95739ab-a751-4af9-8016-f25a17257bed",
+      "publishingHouseId": "f95739ab-a751-4af9-8016-f25a17257bed"
+    }
+  ]
+}
+
+<> 2023-09-20T123224.500.json
+
+###
+
+GET http://localhost:8080/library/books/get/all/0/5?sortBy=title&isDesc=true&findBy=authors=433a75cc-c8e3-4a45-888b-cc675d595278
+Accept: application/json
+
+<> 2023-09-20T122141.500.json
+
+###
+
+GET http://localhost:8080/library/books/get/all/0/5?sortBy=title&isDesc=true&findBy=authors=433a75cc-c8e3-4a45-888b-cc675d595278
+Accept: application/json
+
+<> 2023-09-20T122013.500.json
+
+###
+
+PUT http://localhost:8080/library/authors/put
+Content-Type: application/json
+Accept: application/json
+
+{
+  "value": [
+    {
+      "name": "aa",
+      "books": ["fac20158-913e-4832-99c7-f36b950052ec", "7c7d8f81-2afe-42be-a464-586facf22b8c"]
+    },
+    {
+      "name": "ab",
+      "books": ["eca47e14-9eaf-472f-a15e-adfbc24c06c0", "30e18301-2ecb-4e49-ae4e-26d7ff32ed23"]
+    }
+  ]
+}
+
+###
+
+GET http://localhost:8080/library/authors/get/byBook/fac20158-913e-4832-99c7-f36b950052ec
+Accept: application/json
+
+<> 2023-09-20T104244.200.json
+
+###
+
+GET http://localhost:8080/library/books/get/all/0/5?sortBy=title&isDesc=true&findBy=genre_name=classic
+Accept: application/json
+
+<> 2023-09-20T103255.200.json
+
+###
+
+GET http://localhost:8080/library/books/get/all/0/5?sortBy=title&isDesc=true&findBy=title=title1
+Accept: application/json
+
+<> 2023-09-20T103238.200.json
+
+###
+
+GET http://localhost:8080/library/books/get/all/0/5?sortBy=title&isDesc=true&findBy=title=title
+Accept: application/json
+
+<> 2023-09-20T103231.200.json
+
+###
+
+GET http://localhost:8080/library/books/get/all/0/5?sortBy=title&isDesc=true&findBy=title=title
+Accept: application/json
+
+<> 2023-09-20T103024.500.json
+
+###
+
+GET http://localhost:8080/library/books/get/all/0/5?sortBy=title&isDesc=true&findBy=authors_id=f1ab6f91-4e42-4ca4-b87a-ac2590b6f52f
+Accept: application/json
+
+<> 2023-09-20T102751.500.json
+
+###
+
+GET http://localhost:8080/library/books/get/all/0/5?sortBy=title&isDesc=true&title=title
+Accept: application/json
+
+<> 2023-09-20T102719.200.json
+
+###
+
+PUT http://localhost:8080/library/authors/put
+Content-Type: application/json
+Accept: application/json
+
+{
+  "value": [
+    {
+      "name": "aa",
+      "books": ["433a75cc-c8e3-4a45-888b-cc675d595278", "3fa76f14-d247-4925-93c7-7e8686b1a4b9"]
+    },
+    {
+      "name": "ab",
+      "books": ["0df445cc-5662-4918-90b3-77c56cb154f9", "f8a1429c-2ee9-446a-b70b-0d337daeaaeb"]
+    }
+  ]
+}
+
+###
+
+PUT http://localhost:8080/library/books/put
+Content-Type: application/json
+Accept: application/json
+
+{
+  "value": [
+    {
+      "tittle": "a",
+      "genreId": "f95739ab-a751-4af9-8016-f25a17257bed",
+      "publishingHouseId": "f95739ab-a751-4af9-8016-f25a17257bed"
+    },
+    {
+      "tittle": "b",
+      "genreId": "f95739ab-a751-4af9-8016-f25a17257bed",
+      "publishingHouseId": "f95739ab-a751-4af9-8016-f25a17257bed"
+    },
+    {
+      "tittle": "c",
+      "genreId": "f95739ab-a751-4af9-8016-f25a17257bed",
+      "publishingHouseId": "f95739ab-a751-4af9-8016-f25a17257bed"
+    },    {
+      "tittle": "d",
+      "genreId": "f95739ab-a751-4af9-8016-f25a17257bed",
+      "publishingHouseId": "f95739ab-a751-4af9-8016-f25a17257bed"
+    },    {
+      "tittle": "e",
+      "genreId": "f95739ab-a751-4af9-8016-f25a17257bed",
+      "publishingHouseId": "f95739ab-a751-4af9-8016-f25a17257bed"
+    },
+    {
+      "tittle": "f",
+      "genreId": "f95739ab-a751-4af9-8016-f25a17257bed",
+      "publishingHouseId": "f95739ab-a751-4af9-8016-f25a17257bed"
+    }
+  ]
+}
+
+<> 2023-09-20T095344.500.json
+
+###
+
+GET http://localhost:8080/library/books/get/all/0/5?sortBy=title&isDesc=true&findBy=genre_name=classic
+Accept: application/json
+
+<> 2023-09-20T084723.200.json
+
+###
+
+GET http://localhost:8080/library/books/get/all/0/2?sortBy=title&isDesc=true
+Accept: application/json
+
+<> 2023-09-20T084713.200.json
+
+###
+
+GET http://localhost:8080/library/books/get/all/0/2?sortBy=title&isDesc=true
+Accept: application/json
+
+<> 2023-09-20T084658.200.json
+
+###
+
+GET http://localhost:8080/library/books/get/all/0/2?sortBy=title&isDesc=true
+Accept: application/json
+
+<> 2023-09-20T084636.200.json
+
+###
+
+GET http://localhost:8080/library/books/get/all/0/2
+Accept: application/json
+
+<> 2023-09-20T084344.200.json
+
+###
+
+GET http://localhost:8080/library/books/get/all/0/2?sortBy=title&isDesc=false
+Accept: application/json
+
+<> 2023-09-20T084337.200.json
+
+###
+
+GET http://localhost:8080/library/books/get/all/0/2?sortBy=title&isDesc=true
+Accept: application/json
+
+<> 2023-09-20T084315.200.json
+
+###
+
+GET http://localhost:8080/library/books/get/all/0/1
+Accept: application/json
+
+<> 2023-09-20T084240.200.json
+
+###
+
+GET http://localhost:8080/library/books/get/all/0/2
+Accept: application/json
+
+<> 2023-09-20T084213.200.json
+
+###
+
+GET http://localhost:8080/library/books/get/all/0/2
+Accept: application/json
+
+<> 2023-09-20T084134.404.json
+
+###
+
+GET http://localhost:8080/library/books/get/all/0/2
+Accept: application/json
+
+<> 2023-09-20T084101.404.json
+
+###
+
+GET http://localhost:8080/library/books/get/all/0/2
+Accept: application/json
+
+<> 2023-09-20T084013.200.json
+
+###
+
+GET http://localhost:8080/library/genre/get/all
+Accept: application/json
+
+<> 2023-09-20T084002.200.json
+
+###
+
+GET http://localhost:8080/library/genre/status
+Accept: application/json
+
+<> 2023-09-20T083923.404.json
+
+###
+
+GET http://localhost:8080/library/genre/get/all
+Accept: application/json
+
+<> 2023-09-20T083757.404.json
+
+###
+
+GET http://localhost:8080/library/genre/get/all
+Accept: application/json
+
+<> 2023-09-20T083624.404.json
+
+###
+
+GET http://localhost:8080/library/genre/status
+Accept: application/json
+
+<> 2023-09-20T083511.404.json
+
+###
+
+PUT http://localhost:8080/library/publ/put
+Content-Type: application/json
+Accept: application/json
+
+{
+  "value": [
+    {
+      "name": "the first publ house"
+    },
+    {
+      "name": "the best publ house"
+    },
+    {
+      "name": "the great publ house"
+    }
+  ]
+}
+
+###
+
+PUT http://localhost:8080/library/genre/put
+Content-Type: application/json
+Accept: application/json
+
+{
+  "value": [
+    {
+      "name": "horror"
+    },
+    {
+      "name": "novel"
+    },
+    {
+      "name": "poem"
+    }
+  ]
+}
+
+###
+
+PUT http://localhost:8080/library/books/put
+Content-Type: application/json
+Accept: application/json
+
+{
+  "value": [
+    {
+      "tittle": "a",
+      "genreId": "f95739ab-a751-4af9-8016-f25a17257bed",
+      "publishingHouseId": "f95739ab-a751-4af9-8016-f25a17257bed"
+    },
+    {
+      "tittle": "b",
+      "genreId": "f95739ab-a751-4af9-8016-f25a17257bed",
+      "publishingHouseId": "f95739ab-a751-4af9-8016-f25a17257bed"
+    },
+    {
+      "tittle": "c",
+      "genreId": "f95739ab-a751-4af9-8016-f25a17257bed",
+      "publishingHouseId": "f95739ab-a751-4af9-8016-f25a17257bed"
+    },    {
+      "tittle": "d",
+      "genreId": "f95739ab-a751-4af9-8016-f25a17257bed",
+      "publishingHouseId": "f95739ab-a751-4af9-8016-f25a17257bed"
+    },    {
+      "tittle": "e",
+      "genreId": "f95739ab-a751-4af9-8016-f25a17257bed",
+      "publishingHouseId": "f95739ab-a751-4af9-8016-f25a17257bed"
+    },
+    {
+      "tittle": "f",
+      "genreId": "f95739ab-a751-4af9-8016-f25a17257bed",
+      "publishingHouseId": "f95739ab-a751-4af9-8016-f25a17257bed"
+    }
+  ]
+}
+
+###
+
+PUT http://localhost:8080/library/publ/put
+Content-Type: application/json
+Accept: application/json
+
+{
+  "value": [
+    {
+      "id": "f95739ab-a751-4af9-8016-f25a17257bed",
+      "name": "the first publ house"
+    },
+    {
+      "name": "the best publ house"
+    },
+    {
+      "name": "the great publ house"
+    }
+  ]
+}
+
+<> 2023-09-20T082326.500.json
+
+###
+
+PUT http://localhost:8080/library/books/put
+Content-Type: application/json
+Accept: application/json
+
+{
+  "value": [
+    {
+      "tittle": "title1",
+      "genreId": "f95739ab-a751-4af9-8016-f25a17257bed",
+      "publishingHouseId": "f95739ab-a751-4af9-8016-f25a17257bed"
+    }
+  ]
+}
+
+###
+
+PUT http://localhost:8080/library/genre/put
+Content-Type: application/json
+Accept: application/json
+
+{
+  "value": [
+    {
+      "id": "f95739ab-a751-4af9-8016-f25a17257bed",
+      "name": "horror"
+    },
+    {
+      "name": "novel"
+    },
+    {
+      "name": "poem"
+    }
+  ]
+}
+
+<> 2023-09-20T082253.500.json
+
+###
+
+PUT http://localhost:8080/library/genre/put
+Content-Type: application/json
+Accept: application/json
+
+{
+  "value": [
+    {
+      "name": "horror"
+    },
+    {
+      "name": "novel"
+    },
+    {
+      "name": "poem"
+    }
+  ]
+}
+
+<> 2023-09-20T082201.500.json
+
+###
+
+PUT http://localhost:8080/library/genre/put
+Content-Type: application/json
+Accept: application/json
+
+{
+  "value": [
+    {
+      "name": "horror"
+    },
+    {
+      "name": "novel"
+    },
+    {
+      "name": "poem"
+    }
+  ]
+}
+
+<> 2023-09-20T082119.500.json
+
+###
+

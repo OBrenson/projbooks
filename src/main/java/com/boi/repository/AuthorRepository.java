@@ -12,5 +12,5 @@ public interface AuthorRepository extends JpaRepository<Author, UUID> {
 
     List<Author> findByBooks_Title(String title);
 
-    Author findByName(String name);
+    List<Author> findByNameLike(String name);
 }

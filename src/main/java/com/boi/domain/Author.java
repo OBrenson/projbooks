@@ -25,8 +25,8 @@ public class Author extends BaseEntity {
     @ManyToMany
     @JoinTable(
             name = "author_book",
-            joinColumns = @JoinColumn(name = "book_id"),
-            inverseJoinColumns = @JoinColumn(name = "aouthor_id")
+            joinColumns = @JoinColumn(name = "aouthor_id"),
+            inverseJoinColumns = @JoinColumn(name = "book_id")
     )
     private List<Book> books;
 }

@@ -6,19 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 import java.util.UUID;
 
-public interface BookRepository extends JpaRepository<Book, UUID> {
+public interface BookRepository extends JpaRepository<Book, UUID>, RepositoryCustomBook {
 
-    Book findByTitle(String title);
-
-    Book findByYear(int year);
-
-    List<Book> findByAuthors_Id(UUID id);
-
-    List<Book> findByAuthors_Name(String name);
-
-    List<Book> findByGenre_Name(String genreName);
-
-    List<Book> findByPublishingHouse_Id(UUID id);
-
-    List<Book> findByPublishingHouse_Name(String name);
 }

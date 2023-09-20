@@ -7,7 +7,6 @@ import com.boi.dto.Mappers;
 import com.boi.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,25 +19,20 @@ public class BookController {
     @Autowired
     public BookRepository bookRepository;
 
-    @GetMapping(value = "get/all/{from}/{to})")
-    public List<BookDto> getAllBooks(@PathVariable(value = "from") int from,
-                                     @PathVariable(value = "to") int to,
-                                     @RequestParam Optional<String> sortBy,
-                                     @RequestParam Optional<Boolean> isDesc) {
+    @GetMapping(value = "get/all/{page}/{size}")
+    public List<BookDto> getAllBooks(@PathVariable(value = "page") int page,
+                                     @PathVariable(value = "size") int size,
+                                     @RequestParam(required = false) Optional<String> sortBy,
+                                     @RequestParam(required = false) Optional<Boolean> isDesc,
+                                     @RequestParam(required = false) Optional<String> findBy) {
 
-        PageRequest pageRequest = PageRequest.of(from, to);
-        if(sortBy.isPresent()) {
-            Sort sort=Sort.by(sortBy.get());
-            if(isDesc.isPresent()) {
-                if(isDesc.get()) {
-                    sort = sort.descending();
-                } else {
-                    sort = sort.ascending();
-                }
-            }
-            pageRequest = pageRequest.withSort(sort);
+        PageRequest pageRequest = ControllerUtils.preparePageRequest(page, size, sortBy, isDesc);
+        if(findBy.isPresent()) {
+            String[] find = findBy.get().split("=");
+            return Mappers.mapBooksToDtos(bookRepository.findByColumn(find[0], find[1],pageRequest));
+        } else {
+            return Mappers.mapBooksToDtos(bookRepository.findAll(pageRequest).getContent());
         }
-        return Mappers.mapBooksToDtos(bookRepository.findAll(pageRequest).getContent());
     }
 
     @PutMapping("put")

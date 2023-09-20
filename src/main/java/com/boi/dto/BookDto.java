@@ -11,16 +11,15 @@ import java.util.UUID;
 @Getter
 @Setter
 @NoArgsConstructor
-public class BookDto implements Serializable {
+public class BookDto extends EntityDto {
 
-    public BookDto(String tittle, UUID genreId, UUID publishingHouseId, List<UUID> authors) {
+    public BookDto(UUID id, String tittle, UUID genreId, UUID publishingHouseId, List<UUID> authors) {
+        this.id = id;
         this.tittle = tittle;
         this.genreId = genreId;
         this.publishingHouseId = publishingHouseId;
         this.authors = authors;
     }
-
-    private UUID id;
 
     private String tittle;
 
@@ -28,5 +27,5 @@ public class BookDto implements Serializable {
 
     private UUID publishingHouseId;
 
-    List<UUID> authors;
+    private List<UUID> authors;
 }
