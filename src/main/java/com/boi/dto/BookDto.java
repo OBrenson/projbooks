@@ -1,5 +1,6 @@
 package com.boi.dto;
 
+import com.boi.domain.PublishingHouse;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,19 +14,19 @@ import java.util.UUID;
 @NoArgsConstructor
 public class BookDto extends EntityDto {
 
-    public BookDto(UUID id, String tittle, UUID genreId, UUID publishingHouseId, List<UUID> authors) {
+    public BookDto(UUID id, String tittle, GenreDto genre, PublDto publishingHouse, List<AuthorDto> authors) {
         this.id = id;
-        this.tittle = tittle;
-        this.genreId = genreId;
-        this.publishingHouseId = publishingHouseId;
+        this.title = tittle;
+        this.genre = genre;
+        this.publ = publishingHouse;
         this.authors = authors;
     }
 
-    private String tittle;
+    private String title;
 
-    private UUID genreId;
+    private GenreDto genre;
 
-    private UUID publishingHouseId;
+    private PublDto publ;
 
-    private List<UUID> authors;
+    private List<AuthorDto> authors;
 }

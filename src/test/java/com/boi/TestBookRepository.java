@@ -3,7 +3,9 @@ package com.boi;
 import com.boi.domain.Author;
 import com.boi.domain.Book;
 import com.boi.dto.BookDto;
+import com.boi.dto.GenreDto;
 import com.boi.dto.Mappers;
+import com.boi.dto.PublDto;
 import com.boi.repository.AuthorRepository;
 import com.boi.repository.BookRepository;
 import org.junit.jupiter.api.Test;
@@ -29,9 +31,9 @@ public class TestBookRepository {
     public void testSave() {
         List<BookDto> dtos = new ArrayList<>();
         BookDto dto = new BookDto();
-        dto.setTittle("title");
-        dto.setGenreId(UUID.fromString("f95739ab-a751-4af9-8016-f25a17257bed"));
-        dto.setPublishingHouseId(UUID.fromString("f95739ab-a751-4af9-8016-f25a17257bed"));
+        dto.setTitle("title");
+        dto.setGenre(new GenreDto(UUID.fromString("f95739ab-a751-4af9-8016-f25a17257bed"), "asd"));
+        dto.setPubl(new PublDto(UUID.fromString("f95739ab-a751-4af9-8016-f25a17257bed"), "pub"));
         dtos.add(dto);
         List<Book> books = Mappers.mapDtosToBooks(dtos);
         bookRepository.saveAll(books);

@@ -12,6 +12,11 @@ import java.util.UUID;
 @NoArgsConstructor
 public class AuthorDto extends EntityDto {
 
+    public AuthorDto(UUID id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
     public AuthorDto(UUID id, String name, List<UUID> books) {
         this.id = id;
         this.name = name;

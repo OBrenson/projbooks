@@ -22,7 +22,7 @@ public class Author extends BaseEntity {
     @Column(unique = true)
     private String name;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "author_book",
             joinColumns = @JoinColumn(name = "aouthor_id"),
