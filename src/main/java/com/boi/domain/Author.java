@@ -22,11 +22,6 @@ public class Author extends BaseEntity {
     @Column(unique = true)
     private String name;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(
-            name = "author_book",
-            joinColumns = @JoinColumn(name = "aouthor_id"),
-            inverseJoinColumns = @JoinColumn(name = "book_id")
-    )
+    @ManyToMany(mappedBy = "authors")
     private List<Book> books;
 }

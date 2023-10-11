@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -48,4 +49,13 @@ public class BookController {
         bookRepository.saveAll(books);
     }
 
+    @DeleteMapping("{id}")
+    public void deleteBook(@PathVariable(value = "id") String id) {
+        bookRepository.deleteById(UUID.fromString(id));
+    }
+
+    @GetMapping("count")
+    public long count() {
+        return bookRepository.count();
+    }
 }

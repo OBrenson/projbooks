@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/library/genre")
 public class GenreController {
@@ -18,9 +19,9 @@ public class GenreController {
     private GenreRepository genreRepository;
 
     @GetMapping(value = "get/all")
-    public EntitiesDto<GenreDto> getGenres() {
+    public List<GenreDto> getGenres() {
         List<Genre> genres = genreRepository.findAll();
-        return new EntitiesDto<>(Mappers.mapGenresToDtos(genres));
+        return Mappers.mapGenresToDtos(genres);
     }
 
     @PutMapping("put")

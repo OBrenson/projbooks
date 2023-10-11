@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.*;
 import java.util.stream.Collectors;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/library/authors")
 public class AuthorsController {
@@ -27,15 +28,19 @@ public class AuthorsController {
                                       @RequestParam(required = false) Optional<String> name,
                                       @RequestParam(required = false) Optional<String> id) {
 
-        PageRequest pageRequest = ControllerUtils.preparePageRequest(page, size, sortBy, isDesc);
         List<Author> res = new ArrayList<>();
-        if(name.isEmpty() && id.isEmpty()) {
-            res = authorRepository.findAll(pageRequest).getContent();
+        if(page == 0 && size == 0) {
+            res = authorRepository.findAll();
         } else {
-            if(id.isPresent()) {
-                res.add(authorRepository.findById(UUID.fromString(id.get())).orElse(null));
+            PageRequest pageRequest = ControllerUtils.preparePageRequest(page, size, sortBy, isDesc);
+            if (name.isEmpty() && id.isEmpty()) {
+                res = authorRepository.findAll(pageRequest).getContent();
             } else {
-                res = authorRepository.findByNameLike("%" + name.get() + "%");
+                if (id.isPresent()) {
+                    res.add(authorRepository.findById(UUID.fromString(id.get())).orElse(null));
+                } else {
+                    res = authorRepository.findByNameLike("%" + name.get() + "%");
+                }
             }
         }
         return Mappers.mapAuthorsToDtos(res);
