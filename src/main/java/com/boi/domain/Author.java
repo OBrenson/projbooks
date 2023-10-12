@@ -3,6 +3,8 @@ package com.boi.domain;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.util.List;
@@ -22,6 +24,7 @@ public class Author extends BaseEntity {
     @Column(unique = true)
     private String name;
 
-    @ManyToMany(mappedBy = "authors")
+    @ManyToMany(mappedBy = "authors", cascade = { CascadeType.PERSIST})
+    @Fetch(FetchMode.JOIN)
     private List<Book> books;
 }

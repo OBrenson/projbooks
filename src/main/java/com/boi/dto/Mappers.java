@@ -66,7 +66,7 @@ public class Mappers {
         return authors.stream().map(a -> new AuthorDto(
                 a.getId(),
                 a.getName(),
-                a.getBooks().stream().map(Book::getId).collect(Collectors.toList()))
+                a.getBooks().stream().map(b -> new BookDto(b.getId(), b.getTitle())).collect(Collectors.toList()))
         ).collect(Collectors.toList());
     }
 
@@ -75,7 +75,7 @@ public class Mappers {
             Author author = new Author(a.getId());
             author.setName(a.getName());
             if(a.getBooks() != null && !a.getBooks().isEmpty()) {
-                author.setBooks(a.getBooks().stream().map(Book::new).collect(Collectors.toList()));
+                author.setBooks(a.getBooks().stream().map(b -> new Book(b.getId())).collect(Collectors.toList()));
             }
             return author;
         }).collect(Collectors.toList());

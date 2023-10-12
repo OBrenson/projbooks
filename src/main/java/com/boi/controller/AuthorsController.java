@@ -57,4 +57,14 @@ public class AuthorsController {
         List<Author> authors = Mappers.mapDtosToAuthors(dtos.getValue());
         authorRepository.saveAll(authors);
     }
+
+    @DeleteMapping("{id}")
+    public void delete(@PathVariable String id) {
+        authorRepository.deleteById(UUID.fromString(id));
+    }
+
+    @GetMapping("count")
+    public long count() {
+        return authorRepository.count();
+    }
 }

@@ -7,20 +7,29 @@ import java.util.Optional;
 
 public class ControllerUtils {
 
-    public static PageRequest preparePageRequest(int page, int size,
+    public static PageRequest preparePageRequest(Integer page, Integer size,
                                                  Optional<String> sortBy, Optional<Boolean> isDesc) {
-        PageRequest pageRequest = PageRequest.of(page, size);
+
+        PageRequest pageRequest = PageRequest.of(page, size);;
+        Sort sort = getSort(sortBy, isDesc);
+        if(sort != null) {
+            pageRequest = pageRequest.withSort(sort);
+        }
+        return pageRequest;
+    }
+
+    public static Sort getSort(Optional<String> sortBy, Optional<Boolean> isDesc) {
         if(sortBy.isPresent()) {
             Sort sort = Sort.by(sortBy.get());
-            if(isDesc.isPresent()) {
-                if(isDesc.get()) {
+            if (isDesc.isPresent()) {
+                if (isDesc.get()) {
                     sort = sort.descending();
                 } else {
                     sort = sort.ascending();
                 }
             }
-            pageRequest = pageRequest.withSort(sort);
+            return sort;
         }
-        return pageRequest;
+        return null;
     }
 }

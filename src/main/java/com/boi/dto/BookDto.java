@@ -22,6 +22,11 @@ public class BookDto extends EntityDto {
         this.authors = authors;
     }
 
+    public BookDto(UUID id, String title) {
+        this.id = id;
+        this.title = title;
+    }
+
     private String title;
 
     private GenreDto genre;
