@@ -1,0 +1,4 @@
+INSERT INTO library.book (id, title, year, genre_id, publishoing_house_id) VALUES ('f264cbe2-3a05-42b5-a9d8-ea8635a302d5', 'Война и мир', 0, '057c4864-28e5-4e4b-a7fe-8340ce253d98', 'e2b30912-a393-4087-95db-7c10e53fbde5');
+INSERT INTO library.book (id, title, year, genre_id, publishoing_house_id) VALUES ('7daece58-30b2-46b2-a295-779d1e4cbf78', 'Анна Каренина', 0, '057c4864-28e5-4e4b-a7fe-8340ce253d98', 'e2b30912-a393-4087-95db-7c10e53fbde5');
+INSERT INTO library.book (id, title, year, genre_id, publishoing_house_id) VALUES ('bdbbde6f-6271-4747-96ab-57575a30b035', 'Тарас Бульба', 0, 'ee28ef93-c366-4b01-b828-69bc49ce3073', 'f95739ab-a751-4af9-8016-f25a17257bed');
+INSERT INTO library.book (id, title, year, genre_id, publishoing_house_id) VALUES ('54ff97ca-2eba-4aca-aa8e-5791b6913e33', 'IT', 0, '4432c970-b67a-47c9-a714-6995381eac89', '38627ded-210d-4771-b607-66c027c2b7c0');
