@@ -1,9 +1,7 @@
 package com.boi.dto;
 
-import com.boi.domain.Author;
-import com.boi.domain.Book;
-import com.boi.domain.Genre;
-import com.boi.domain.PublishingHouse;
+import com.boi.domain.*;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -44,8 +42,31 @@ public class Mappers {
                 .collect(Collectors.toList());
     }
 
+    public static List<AppUser> mapDtosToUsers(List<UserDto> userDtos, PasswordEncoder encoder) {
+        return userDtos.stream()
+                .map(u -> {
+                    AppUser user = new AppUser(u.getId());
+                    user.setName(u.getName());
+                    user.setRoles(u.getRoles().stream()
+                            .map(r -> new Role(r.getId(), r.getName())).collect(Collectors.toSet()));
+                    user.setPassword(encoder.encode(u.getPassword()));
+                    return user;
+                })
+                .collect(Collectors.toList());
+    }
+
     public static List<GenreDto> mapGenresToDtos(List<Genre> genres) {
         return genres.stream().map(g -> new GenreDto(g.getId(), g.getName())).collect(Collectors.toList());
+    }
+
+    public static List<UserDto> mapUsersToDtos(List<AppUser> users) {
+        return users.stream().map(u ->
+                new UserDto(
+                        u.getId(),
+                        u.getName(),
+                        u.getRoles().stream().map(r -> new RoleDto(r.getId(), r.getName())).collect(Collectors.toSet())
+                )
+        ).collect(Collectors.toList());
     }
 
     public static List<PublishingHouse> mapDtosToPubl(List<PublDto> publs) {
