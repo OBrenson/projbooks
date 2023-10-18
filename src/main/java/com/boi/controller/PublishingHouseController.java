@@ -6,6 +6,7 @@ import com.boi.dto.EntitiesDto;
 import com.boi.dto.Mappers;
 import com.boi.dto.PublDto;
 import com.boi.repository.PublishingHouseRepository;
+import com.boi.service.PublishingHouseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +21,7 @@ import java.util.UUID;
 public class PublishingHouseController {
 
     @Autowired
-    private PublishingHouseRepository repository;
+    private PublishingHouseService service;
 
     @GetMapping("/get/all")
     public List<PublDto> getPublishingHouses(@RequestParam(required = false) Optional<String> sortBy,
@@ -28,9 +29,9 @@ public class PublishingHouseController {
         Sort sort = ControllerUtils.getSort(sortBy, isDesc);
         List<PublishingHouse> publs;
         if(sort == null) {
-            publs = repository.findAll();
+            publs = service.findAll();
         } else {
-            publs = repository.findAll(sort);
+            publs = service.findAll(sort);
         }
         return Mappers.mapPublsToDtos(publs);
     }
@@ -38,11 +39,11 @@ public class PublishingHouseController {
     @PutMapping("put")
     public void putPublishingHouses(@RequestBody EntitiesDto<PublDto> houses) {
         List<PublishingHouse> publs = Mappers.mapDtosToPubl(houses.getValue());
-        repository.saveAll(publs);
+        service.saveAll(publs);
     }
 
     @DeleteMapping("{id}")
     public void delete(@PathVariable String id) {
-        repository.deleteById(UUID.fromString(id));
+        service.deleteById(UUID.fromString(id));
     }
 }

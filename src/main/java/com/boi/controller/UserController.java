@@ -4,8 +4,9 @@ import com.boi.domain.AppUser;
 import com.boi.dto.EntitiesDto;
 import com.boi.dto.Mappers;
 import com.boi.dto.UserDto;
-import com.boi.repository.AppUserRepository;
+import com.boi.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,23 +22,26 @@ public class UserController {
     private PasswordEncoder passwordEncoder;
 
     @Autowired
-    private AppUserRepository userRepository;
+    private UserService userService;
 
     @GetMapping(value = "get/all")
-    public List<UserDto> getGenres() {
+    @Secured("ADMIN")
+    public List<UserDto> getUsers() {
 
-        List<AppUser> users = userRepository.findAll();
+        List<AppUser> users = userService.findAll();
         return Mappers.mapUsersToDtos(users);
     }
 
     @PutMapping("put")
-    public void putGenres(@RequestBody EntitiesDto<UserDto> dtos) {
+    @Secured("ADMIN")
+    public void putUsers(@RequestBody EntitiesDto<UserDto> dtos) {
         List<AppUser> users = Mappers.mapDtosToUsers(dtos.getValue(), passwordEncoder);
-        userRepository.saveAll(users);
+        userService.saveAll(users);
     }
 
     @DeleteMapping("{id}")
+    @Secured("ADMIN")
     public void delete(@PathVariable String id) {
-        userRepository.deleteById(UUID.fromString(id));
+        userService.deleteById(UUID.fromString(id));
     }
 }

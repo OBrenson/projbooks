@@ -5,6 +5,7 @@ import com.boi.dto.EntitiesDto;
 import com.boi.dto.GenreDto;
 import com.boi.dto.Mappers;
 import com.boi.repository.GenreRepository;
+import com.boi.service.GenreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -20,7 +21,7 @@ import java.util.UUID;
 public class GenreController {
 
     @Autowired
-    private GenreRepository genreRepository;
+    private GenreService genreService;
 
     @GetMapping(value = "get/all")
     public List<GenreDto> getGenres(@RequestParam(required = false) Optional<String> sortBy,
@@ -29,9 +30,9 @@ public class GenreController {
         Sort sort = ControllerUtils.getSort(sortBy, isDesc);
         List<Genre> genres;
         if(sort == null) {
-            genres = genreRepository.findAll();
+            genres = genreService.findAll();
         } else {
-            genres = genreRepository.findAll(sort);
+            genres = genreService.findAll(sort);
         }
         return Mappers.mapGenresToDtos(genres);
     }
@@ -39,11 +40,11 @@ public class GenreController {
     @PutMapping("put")
     public void putGenres(@RequestBody EntitiesDto<GenreDto> dtos) {
         List<Genre> genres = Mappers.mapDtosToGenres(dtos.getValue());
-        genreRepository.saveAll(genres);
+        genreService.saveAll(genres);
     }
 
     @DeleteMapping("{id}")
     public void delete(@PathVariable String id) {
-        genreRepository.deleteById(UUID.fromString(id));
+        genreService.deleteById(UUID.fromString(id));
     }
 }

@@ -5,6 +5,7 @@ import com.boi.dto.BookDto;
 import com.boi.dto.EntitiesDto;
 import com.boi.dto.Mappers;
 import com.boi.repository.BookRepository;
+import com.boi.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpHeaders;
@@ -21,7 +22,7 @@ import java.util.UUID;
 public class BookController {
 
     @Autowired
-    public BookRepository bookRepository;
+    public BookService bookService;
 
     @GetMapping(value = "get/all/{page}/{size}")
     public ResponseEntity<List<BookDto>> getAllBooks(@PathVariable(value = "page") int page,
@@ -36,26 +37,26 @@ public class BookController {
         if(findBy.isPresent()) {
             String[] find = findBy.get().split("=");
             return ResponseEntity.ok().headers(headers).body(
-                    Mappers.mapBooksToDtos(bookRepository.findByColumn(find[0], find[1],pageRequest)));
+                    Mappers.mapBooksToDtos(bookService.findByColumn(find[0], find[1],pageRequest)));
         } else {
             return ResponseEntity.ok().headers(headers).body(
-                    Mappers.mapBooksToDtos(bookRepository.findAll(pageRequest).getContent()));
+                    Mappers.mapBooksToDtos(bookService.findAll(pageRequest)));
         }
     }
 
     @PutMapping("put")
     public void putBooks(@RequestBody EntitiesDto<BookDto> bookDtos) {
         List<Book> books = Mappers.mapDtosToBooks(bookDtos.getValue());
-        bookRepository.saveAll(books);
+        bookService.saveAll(books);
     }
 
     @DeleteMapping("{id}")
     public void deleteBook(@PathVariable(value = "id") String id) {
-        bookRepository.deleteById(UUID.fromString(id));
+        bookService.deleteById(UUID.fromString(id));
     }
 
     @GetMapping("count")
     public long count() {
-        return bookRepository.count();
+        return bookService.count();
     }
 }

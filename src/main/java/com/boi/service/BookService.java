@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class BookService implements DataSourceService {
@@ -29,5 +30,13 @@ public class BookService implements DataSourceService {
 
     public void saveAll(List<Book> books) {
         bookRepository.saveAll(books);
+    }
+
+    public void deleteById(UUID id) {
+        bookRepository.deleteById(id);
+    }
+
+    public long count() {
+        return bookRepository.count();
     }
 }
