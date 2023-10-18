@@ -25,22 +25,21 @@ public class RepositoryCustomBookImpl implements RepositoryCustomBook {
 
         String[] columns = column.split("_");
         Path<Object> path = null;
-        if(columns.length == 2) {
+        if (columns.length == 2) {
             path = bookRoot.join(columns[0]).get(columns[1]);
         } else {
             path = bookRoot.get(columns[0]);
         }
-        if(columns[0].equals("authors")) {
+        if (columns[0].equals("authors")) {
             List<UUID> tmp = new ArrayList<>();
-            tmp.add(UUID.fromString((String)value));
+            tmp.add(UUID.fromString((String) value));
             value = tmp;
         }
         query = query.select(bookRoot).where(cb.equal(path, value));
-        if(!pageable.getSort().isEmpty()) {
+        if (!pageable.getSort().isEmpty()) {
             query = query.orderBy(QueryUtils.toOrders(pageable.getSort(), bookRoot, cb));
         }
         int from = (pageable.getPageNumber()) * pageable.getPageSize();
-        int to = from + pageable.getPageSize();
         return entityManager.createQuery(query)
                 .setFirstResult(from)
                 .setMaxResults(pageable.getPageSize())

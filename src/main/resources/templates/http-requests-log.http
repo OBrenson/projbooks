@@ -277,7 +277,7 @@ Accept: application/json
 
 ###
 
-GET http://localhost:8080/library/books/get/all/0/5?sortBy=title&isDesc=true&findBy=authors_id=f1ab6f91-4e42-4ca4-b87a-ac2590b6f52f
+GET http://localhost:8080/library/books/get/all/0/5?sortBy=title&isDesc=true&findBy=authors_id=ae2289fe-9148-4243-a527-3ed66325c573
 Accept: application/json
 
 <> 2023-09-20T102751.500.json
@@ -299,11 +299,11 @@ Accept: application/json
   "value": [
     {
       "name": "aa",
-      "books": ["433a75cc-c8e3-4a45-888b-cc675d595278", "3fa76f14-d247-4925-93c7-7e8686b1a4b9"]
+      "books": ["bae134af-9cbe-4a8c-b2c2-61ed83875091", "ec8f009a-58c4-47f1-98d0-3a87a71daec2"]
     },
     {
       "name": "ab",
-      "books": ["0df445cc-5662-4918-90b3-77c56cb154f9", "f8a1429c-2ee9-446a-b70b-0d337daeaaeb"]
+      "books": ["c6539f89-fe81-4a3f-9085-832f4349d36d", "74f5c824-8c34-4fca-ac5c-173bc786f15b"]
     }
   ]
 }
